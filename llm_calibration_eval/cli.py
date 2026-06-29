@@ -61,7 +61,9 @@ def _plot_reliability(result: "EvaluationResult") -> None:  # type: ignore[name-
     plt.tight_layout()
     plt.savefig("reliability_diagram.png", dpi=150)
     print("Reliability diagram saved to reliability_diagram.png")
-    plt.show()
+    # Only display interactively; avoids a non-interactive-backend warning in headless/CI runs.
+    if plt.get_backend().lower() not in ("agg", "pdf", "ps", "svg", "template"):
+        plt.show()
 
 
 def cmd_run(args: argparse.Namespace) -> int:

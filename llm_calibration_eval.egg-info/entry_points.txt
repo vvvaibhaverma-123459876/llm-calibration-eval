@@ -1,2 +1,0 @@
-[console_scripts]
-llm-calibration-eval = llm_calibration_eval.cli:main
